@@ -1,9 +1,9 @@
 # Alchemists helper
 by Petr Zelina
 
-Available at [www.baiku.cz/alchemists](baiku.cz/alchemists).
+Available at [baiku.cz/alchemists](https://www.baiku.cz/alchemists).
 
-A simple helper webapp for Alchemists, Matúš Kotry's board game. All images belong to the game publishers.
+A simple helper webapp for Alchemists –⁠⁠⁠ Matúš Kotry's board game. All images belong to the game publishers.
 
 ## Features
 - [x] add/remove/disable discovered potion equations
