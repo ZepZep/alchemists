@@ -93,6 +93,16 @@ function testModel(model, constraints, summary) {
 function satisfies(model, constraints) {
     for (let i = 0; i < constraints.length; i++) {
         const [i1, i2, sign, shouldBe] = constraints[i]
+
+        if (i1 === -1) {
+            if (!okUnknown(model, i1, i2, shouldBe)) return false;
+            continue;
+        }
+        if (i2 === -1) {
+            if (!okUnknown(model, i2, i1, shouldBe)) return false;
+            continue;
+        }
+
         result = codex[[model[i1], model[i2]]]
         if (sign === "=") {
             if (result !== shouldBe) return false;
@@ -102,6 +112,21 @@ function satisfies(model, constraints) {
         }
     }
     return true
+}
+
+function okUnknown(model, i1, i2, shouldBe) {
+    if (i2 === -1) return true;
+
+    if (shouldBe === "0") return true;
+
+    let chem = chemicals[model[i2]]; // pNn
+    let colorIndex = potion_colors.indexOf(shouldBe[0])
+    let sign = shouldBe[1]
+
+    if (sign === "+") {
+        return "pP".indexOf(chem[colorIndex]) !== -1
+    }
+    return "nN".indexOf(chem[colorIndex]) !== -1
 }
 
 // console.log("start")
